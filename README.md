@@ -1,4 +1,4 @@
-Thank you for taking the time for this technical assignment. We expect you to finish the assignment in about ~4 hours max. We encourage you to submit even if you did not completely finish. This assignment is more about getting to know your development style and how you approach building new functionalities.
+Thank you for taking the time for this technical assignment. We suggest to finish or timecap the assignment to a maximum of ~4 hours. We encourage you to submit even if you did not completely finish. This assignment is more about getting to know your development style and how you approach building new functionalities.
 
 After completing the assignment you may be invited to a follow-up interview where we do some collaborative coding based on your code.
 
