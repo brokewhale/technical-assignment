@@ -2,6 +2,10 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
 import { getSchedule } from 'store/slices';
+import { RoomElement } from 'types/schedule';
+import { filterByRoom } from 'utils/filters/fillterByRoom';
+import { filterByDay } from 'utils/filters/filterByDay';
+import { filterByTrack } from 'utils/filters/filterByTrack';
 import styles from './index.module.scss';
 
 const Home: NextPage = () => {
@@ -12,6 +16,18 @@ const Home: NextPage = () => {
   }, [dispatch]);
 
   let schedule = scheduleData?.conference;
+  let loading = scheduleData?.isLoading;
+
+  if (!loading) {
+    console.log('room', filterByRoom(schedule?.days, 'Khaki Room'));
+    console.log('day', filterByDay(schedule?.days, '2022-06-06'));
+    console.log(
+      'room',
+      filterByRoom(filterByDay(schedule?.days, '2022-06-06'), 'Khaki Room')
+    );
+    console.log('day', filterByTrack(schedule?.days, 'Realigned'));
+  }
+
   return (
     <div>
       <header>
@@ -23,6 +39,12 @@ const Home: NextPage = () => {
           Democon is an automatically generated event to test and showcase our
           schedule overview.
         </p>
+
+        {schedule.rooms?.map((room: RoomElement) => (
+          <div key={room.name}>
+            <h2>{room.name}</h2>
+          </div>
+        ))}
       </main>
 
       <footer>

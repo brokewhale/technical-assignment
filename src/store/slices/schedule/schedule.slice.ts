@@ -11,7 +11,7 @@ const initialState: ScheduleState = {
   version: '',
   base_url: '',
   conference: {} as Conference,
-  isLoading: false,
+  isLoading: true,
 };
 
 export const scheduleSlice = createSlice({
