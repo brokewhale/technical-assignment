@@ -1,14 +1,16 @@
 import { createSlice, SerializedError } from '@reduxjs/toolkit';
+import { Conference, ScheduleClass, Schedule } from 'types/schedule';
 import { getSchedule } from './schedule.action';
 
-interface ScheduleState {
-  data: {};
+interface ScheduleState extends ScheduleClass {
   error?: SerializedError['message'];
   isLoading: boolean;
 }
 
 const initialState: ScheduleState = {
-  data: {},
+  version: '',
+  base_url: '',
+  conference: {} as Conference,
   isLoading: false,
 };
 
@@ -21,8 +23,10 @@ export const scheduleSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(getSchedule.fulfilled, (state, action) => {
-      state.data = action.payload as any;
-      state.isLoading = false;
+      return Object.assign(state, {
+        ...(action.payload as Schedule),
+        isLoading: false,
+      });
     });
     builder.addCase(getSchedule.rejected, (state, action) => {
       state.error = action.error.message;

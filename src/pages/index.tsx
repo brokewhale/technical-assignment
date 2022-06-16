@@ -2,19 +2,20 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
 import { getSchedule } from 'store/slices';
+import styles from './index.module.scss';
 
 const Home: NextPage = () => {
-  const schedule = useAppSelector((state) => state.schedule);
+  const scheduleData = useAppSelector((state) => state.schedule) as any;
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getSchedule());
   }, [dispatch]);
 
-  console.log('schedule', schedule);
+  let schedule = scheduleData?.conference;
   return (
     <div>
       <header>
-        <h1>Welcome to Democon</h1>
+        <h1 className={styles.header}>Welcome to {schedule?.title}</h1>
       </header>
 
       <main>

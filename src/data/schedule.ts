@@ -1,2 +1,3 @@
 import schedule from './schedule.json';
-export const fetchSchedule = () => new Promise((resolve) => resolve(schedule));
+export const fetchSchedule = () =>
+  new Promise<unknown>((resolve) => resolve(schedule.schedule));
