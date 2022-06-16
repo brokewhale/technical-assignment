@@ -1,6 +1,16 @@
-import type { NextPage } from 'next'
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import type { NextPage } from 'next';
+import { useEffect } from 'react';
+import { getSchedule } from 'store/slices';
 
 const Home: NextPage = () => {
+  const schedule = useAppSelector((state) => state.schedule);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getSchedule());
+  }, [dispatch]);
+
+  console.log('schedule', schedule);
   return (
     <div>
       <header>
@@ -9,7 +19,8 @@ const Home: NextPage = () => {
 
       <main>
         <p>
-          Democon is an automatically generated event to test and showcase our schedule overview.
+          Democon is an automatically generated event to test and showcase our
+          schedule overview.
         </p>
       </main>
 
@@ -19,7 +30,7 @@ const Home: NextPage = () => {
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
