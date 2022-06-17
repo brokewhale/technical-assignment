@@ -1,5 +1,7 @@
+import EventCard from 'components/Card';
 import { getAllRooms } from 'helpers/getAllRooms';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import moment from 'moment';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
@@ -22,33 +24,29 @@ export default function Track(props: ITrackProps) {
   let filteredSchedule = filterByTrack(schedule?.days, eventTrack);
   let allRooms = getAllRooms(schedule?.rooms);
   return (
-    <div className={styles.room}>
-      <div className={styles.room_container}>
+    <div className={styles.track}>
+      <div className={styles.track_container}>
         <h1>{eventTrack}</h1>
-        <div className={styles.room_data}>
+        <div className={styles.track_data}>
           {filteredSchedule?.map((day) => {
             const { rooms } = day;
             return (
               <div key={day.date} className={styles.day}>
                 <Link passHref href={`/days/${day.date}`}>
-                  <h2>{day.date}</h2>
+                  <h2 className={styles.dd}>
+                    {moment(day.date).format('dddd, MMMM Do ')}
+                  </h2>
                 </Link>
                 {allRooms?.map((room) => (
                   <div key={room}>
                     <Link passHref href={`/rooms/${room}`}>
-                      <h2>{room}</h2>
+                      <h2 className={styles.df}>{room}</h2>
                     </Link>
-                    <ul>
+                    <div className={styles.eventContainer}>
                       {rooms[room]?.map((room) => (
-                        <li key={room.id}>
-                          <h4>{room.title}</h4>
-                          <Link passHref href={`/tracks/${room.track}`}>
-                            <p>{room.track}</p>
-                          </Link>
-                          <p>{room.start}</p>
-                        </li>
+                        <EventCard room={room} />
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 ))}
               </div>

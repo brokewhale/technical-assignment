@@ -1,4 +1,6 @@
+import EventCard from 'components/Card';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import moment from 'moment';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
@@ -31,19 +33,15 @@ export default function Room(props: IRoomProps) {
             return (
               <div key={day.date} className={styles.day}>
                 <Link passHref href={`/days/${day.date}`}>
-                  <h2>{day.date}</h2>
+                  <h2 className={styles.dd}>
+                    {moment(day.date).format('dddd, MMMM Do ')}
+                  </h2>
                 </Link>
-                <ul>
+                <div className={styles.eventContainer}>
                   {rooms[roomName]?.map((room) => (
-                    <li key={room.id}>
-                      <h4>{room.title}</h4>
-                      <Link passHref href={`/tracks/${room.track}`}>
-                        <p>{room.track}</p>
-                      </Link>
-                      <p>{room.start}</p>
-                    </li>
+                    <EventCard room={room} />
                   ))}
-                </ul>
+                </div>
               </div>
             );
           })}

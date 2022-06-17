@@ -13,3 +13,22 @@
     }
   }
 }
+
+.eventContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.dd {
+  font-family: 'Roboto';
+  margin-top: 20px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 30px;
+  cursor: pointer;
+
+  &:hover {
+    color: cornflowerblue;
+    text-decoration: underline;
+  }
+}

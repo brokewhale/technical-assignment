@@ -1,0 +1,49 @@
+.track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+
+  &_container {
+    h1 {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+  }
+}
+.eventContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.dd {
+  font-family: 'Roboto';
+  margin-top: 20px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 30px;
+  cursor: pointer;
+
+  &:hover {
+    color: cornflowerblue;
+    text-decoration: underline;
+  }
+}
+
+.df {
+  font-family: 'Roboto';
+  margin-top: 20px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 30px;
+  cursor: pointer;
+
+  &:hover {
+    color: cornflowerblue;
+    text-decoration: underline;
+  }
+}

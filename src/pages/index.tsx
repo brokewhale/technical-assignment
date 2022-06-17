@@ -1,3 +1,4 @@
+import Day from 'components/Day/days';
 import { getAllDays } from 'helpers/getAllDays';
 import { getAllRooms } from 'helpers/getAllRooms';
 import { getAllTracks } from 'helpers/getAllTracks';
@@ -48,6 +49,10 @@ const Home: NextPage = () => {
             ))}
           </ol>
         </div>
+
+        <section>
+          <Day />
+        </section>
       </main>
     </div>
   );

@@ -11,8 +11,11 @@
   text-align: center;
 }
 .rooms {
+  padding-left: 10px;
   &_heading {
-    text-align: center;
+    font-family: 'Roboto';
+    margin-top: 20px;
+    text-align: left;
     font-weight: 700;
     font-size: 30px;
   }
@@ -20,7 +23,19 @@
   &_list {
     ol {
       li {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 150.69%;
+        color: #434343;
+        width: fit-content;
+        margin-bottom: 20px;
         cursor: pointer;
+        text-decoration: underline;
+        &:hover {
+          color: cornflowerblue;
+        }
       }
     }
   }
