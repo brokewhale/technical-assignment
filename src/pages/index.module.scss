@@ -6,3 +6,22 @@
   text-align: center;
   color: cornflowerblue;
 }
+
+.info {
+  text-align: center;
+}
+.rooms {
+  &_heading {
+    text-align: center;
+    font-weight: 700;
+    font-size: 30px;
+  }
+
+  &_list {
+    ol {
+      li {
+        cursor: pointer;
+      }
+    }
+  }
+}

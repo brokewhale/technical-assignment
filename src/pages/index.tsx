@@ -3,6 +3,7 @@ import { getAllRooms } from 'helpers/getAllRooms';
 import { getAllTracks } from 'helpers/getAllTracks';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import type { NextPage } from 'next';
+import Link from 'next/link';
 import { useEffect } from 'react';
 import { getSchedule } from 'store/slices';
 import { RoomElement } from 'types/schedule';
@@ -21,19 +22,6 @@ const Home: NextPage = () => {
   let schedule = scheduleData?.conference;
   let loading = scheduleData?.isLoading;
 
-  if (!loading) {
-    // console.log('room', filterByRoom(schedule?.days, 'Khaki Room'));
-    // console.log('day', filterByDay(schedule?.days, '2022-06-06'));
-    // console.log(
-    //   'room',
-    //   filterByRoom(filterByDay(schedule?.days, '2022-06-06'), 'Khaki Room')
-    // );
-    // console.log('day', filterByTrack(schedule?.days, 'Realigned'));
-    console.log('room', getAllRooms(schedule?.rooms));
-    console.log('date', getAllDays(schedule?.days));
-    console.log('tracks', getAllTracks(schedule?.days));
-  }
-
   return (
     <div>
       <header>
@@ -41,23 +29,26 @@ const Home: NextPage = () => {
       </header>
 
       <main>
-        <p>
+        <p className={styles.info}>
           Democon is an automatically generated event to test and showcase our
           schedule overview.
         </p>
 
-        {schedule.rooms?.map((room: RoomElement) => (
-          <div key={room.name}>
-            <h2>{room.name}</h2>
-          </div>
-        ))}
+        <div className={styles.rooms}>
+          <div className={styles.rooms_heading}>Rooms Available</div>
+        </div>
+        <div className={styles.rooms_list}>
+          <ol>
+            {schedule.rooms?.map((room: RoomElement) => (
+              <li key={room.name}>
+                <Link passHref href={`/rooms/${room.name}`}>
+                  <p>{room.name}</p>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </div>
       </main>
-
-      <footer>
-        <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">
-          Powered by Next.js
-        </a>
-      </footer>
     </div>
   );
 };

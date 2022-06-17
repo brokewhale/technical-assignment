@@ -1,0 +1,15 @@
+.room {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+
+  &_container {
+    h1 {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+  }
+}
