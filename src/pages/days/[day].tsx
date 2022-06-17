@@ -26,6 +26,8 @@ export default function Day(props: IDayProps) {
   return (
     <div className={styles.days}>
       <div className={styles.days_container}>
+        <h1>Sort By day</h1>
+
         <h1>{eventDate}</h1>
         <div className={styles.days_data}>
           {filteredSchedule?.map((day) => {

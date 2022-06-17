@@ -26,6 +26,7 @@ export default function Room(props: IRoomProps) {
   return (
     <div className={styles.room}>
       <div className={styles.room_container}>
+        <h1>Sort By Room</h1>
         <h1>{room}</h1>
         <div className={styles.room_data}>
           {filteredSchedule?.map((day) => {

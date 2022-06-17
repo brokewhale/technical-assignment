@@ -26,7 +26,9 @@ export default function Track(props: ITrackProps) {
   return (
     <div className={styles.track}>
       <div className={styles.track_container}>
-        <h1>{eventTrack}</h1>
+        <h1>Sort By Track</h1>
+
+        <h1>Track: {eventTrack}</h1>
         <div className={styles.track_data}>
           {filteredSchedule?.map((day) => {
             const { rooms } = day;
