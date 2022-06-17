@@ -1,3 +1,6 @@
+import { getAllDays } from 'helpers/getAllDays';
+import { getAllRooms } from 'helpers/getAllRooms';
+import { getAllTracks } from 'helpers/getAllTracks';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
@@ -19,13 +22,16 @@ const Home: NextPage = () => {
   let loading = scheduleData?.isLoading;
 
   if (!loading) {
-    console.log('room', filterByRoom(schedule?.days, 'Khaki Room'));
-    console.log('day', filterByDay(schedule?.days, '2022-06-06'));
-    console.log(
-      'room',
-      filterByRoom(filterByDay(schedule?.days, '2022-06-06'), 'Khaki Room')
-    );
-    console.log('day', filterByTrack(schedule?.days, 'Realigned'));
+    // console.log('room', filterByRoom(schedule?.days, 'Khaki Room'));
+    // console.log('day', filterByDay(schedule?.days, '2022-06-06'));
+    // console.log(
+    //   'room',
+    //   filterByRoom(filterByDay(schedule?.days, '2022-06-06'), 'Khaki Room')
+    // );
+    // console.log('day', filterByTrack(schedule?.days, 'Realigned'));
+    console.log('room', getAllRooms(schedule?.rooms));
+    console.log('date', getAllDays(schedule?.days));
+    console.log('tracks', getAllTracks(schedule?.days));
   }
 
   return (
