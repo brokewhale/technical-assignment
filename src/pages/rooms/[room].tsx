@@ -37,7 +37,9 @@ export default function Room(props: IRoomProps) {
                   {rooms[roomName]?.map((room) => (
                     <li key={room.id}>
                       <h4>{room.title}</h4>
-                      <p>{room.track}</p>
+                      <Link passHref href={`/tracks/${room.track}`}>
+                        <p>{room.track}</p>
+                      </Link>
                       <p>{room.start}</p>
                     </li>
                   ))}
